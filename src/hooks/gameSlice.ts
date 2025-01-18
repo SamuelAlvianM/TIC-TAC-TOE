@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { initBoard, winningSituation, makeMove, switchPlayer } from '../utils/index';
 
+
 interface GameState {
     board: string[][];
     currentPlayer: string;

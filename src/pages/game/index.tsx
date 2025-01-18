@@ -1,6 +1,6 @@
 import Board from '@/components/design/Board';
 
-import { RootState } from '../hooks/index';
+import { RootState } from '../../hooks/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { playTurn, resetGame } from '@/hooks/gameSlice';
 
