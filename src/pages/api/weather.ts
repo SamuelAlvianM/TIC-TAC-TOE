@@ -1,5 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import axiosInstance from "../../utils/weather/callWeatherAPI";
+import axios from "axios";
+
+
+
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== "GET") {
