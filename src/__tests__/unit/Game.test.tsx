@@ -26,7 +26,7 @@ it('handles player moves correctly', () => {
     );
 
     const cells = screen.getAllByRole('button');
-    fireEvent.click(cells[0]); // Click first cell
+    fireEvent.click(cells[0]); 
     expect(screen.getByText('Current Player: O')).toBeInTheDocument();
 });
 
@@ -41,11 +41,11 @@ it('handles game reset', () => {
     const resetButton = screen.getByText('Reset Game');
     const cells = screen.getAllByRole('button');
     
-    // Make some moves
+
     fireEvent.click(cells[0]);
     fireEvent.click(cells[1]);
     
-    // Reset game
+
     fireEvent.click(resetButton);
     expect(screen.getByText('Current Player: X')).toBeInTheDocument();
 });

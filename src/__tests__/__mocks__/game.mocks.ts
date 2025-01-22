@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import gameReducer from '@/hooks/gameSlice';
 
-// Define the game state interface
+// bikin interface dulu untuk di mock
 interface GameState {
     board: string[][];
     currentPlayer: string;
@@ -9,12 +9,11 @@ interface GameState {
     isDraw: boolean;
 }
 
-// Define the root state interface
 interface RootState {
     game: GameState;
 }
 
-// Define initial mock state
+// buat mock state di awal
 const initialState: RootState = {
     game: {
     board: Array.from({ length: 3 }, () => Array(3).fill('')),
@@ -24,7 +23,7 @@ const initialState: RootState = {
     },
 };
 
-// Create mock store with optional custom state
+// untuk penggunaan initState sama custom nya kita wrapping jadi 1 variabel dulu
 export const createMockStore = (customState: Partial<RootState> = {}) => {
 const state = {
     ...initialState,
@@ -39,18 +38,31 @@ return configureStore({
     });
 };
 
-// Mock dispatch function
+// ini untuk dispatch mock func
+
+/*
+KARNA AKU PAKE REDUX ini cat kecil untuk kalian yang pakai juga, kemungkinan di context juga bisa pakai ini
+
+
+Dispatch = untuk mengirimkan aksi / action
+
+Action  = untuk perubahan yang akan dilakukan
+
+Payload = informasi yang dibutuhkan untuk melakukan perubahan state
+
+Reducer = fungsi yang dipakai untuk menerima state dan aksi yang dikirimkan.
+*/
 export const mockDispatch = jest.fn();
 
-// Export mock state for individual tests
+// ini export mockState untuk dipakai di file lain
 export const mockState = initialState;
 
-// Mock the react-redux hooks
+// Mock game.mock nya yang uda dibikin sekarang
 const mockSelector = jest.fn();
 export const useSelector = mockSelector;
 export const useDispatch = () => mockDispatch;
 
-// Default export for jest.mock
+// Default export  jest.mock
 export default {
     useSelector: <T>(callback: (state: RootState) => T) => callback(mockState),
     useDispatch: () => mockDispatch,
