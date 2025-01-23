@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import axiosInstance from "../../utils/weather/callWeatherAPI";
+import axiosInstance from "../../../utils/weather/callWeatherAPI";
 import axios from "axios";
 
 
